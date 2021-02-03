@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package javaapplication5;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,11 +7,9 @@ import java.util.Queue;
 import java.util.Stack;
 
 
-
-
-public class ShortestPath {
-	public static int shortestPath(String[][] map, Cell start, Cell end, 
-                                                           Stack<Cell> path) {
+public class Path {
+    
+    public static int shortestPath(String[][] map, Cell start, Cell end, Stack<Cell> path) {
     // initialize distances array filled with infinity
     int[][] distances = new int[map.length][];
     for (int i = 0; i < map.length; i++) {
@@ -36,12 +29,16 @@ public class ShortestPath {
         // set their distance 
         //    and add their neighbors to the list for next round
         for (Cell cell : currentCells) {
+            
             if (distances[cell.row][cell.col] == Integer.MAX_VALUE 
                     && !map[cell.row][cell.col].equals("1")) {
+                
+                
                 distances[cell.row][cell.col] = distance;
                 addNeighbors(cell, nextCells, map.length, map[0].length);
             }
         }
+        
 
         // prepare for next round
         currentCells = nextCells;
@@ -79,7 +76,8 @@ private static Cell getNeighbor(Cell cell, int distance, int[][] distances) {
     int[][] ds = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     for (int[] d : ds) {
         int row = cell.row + d[0];
-        int col = cell.col + d[1];          
+        int col = cell.col + d[1];    
+        
         if (isValid(row, col, distances.length, distances[0].length)
                 && distances[row][col] == distance)
             return new Cell(row, col);              
@@ -88,7 +86,7 @@ private static Cell getNeighbor(Cell cell, int distance, int[][] distances) {
 }
 
 // check if coordinates are inside the maze
-private static boolean isValid(int row, int col, int maxRow, int maxCol) {
+public static boolean isValid(int row, int col, int maxRow, int maxCol) {
     return row >= 0 && row < maxRow && col >= 0 && col < maxCol;
 }
 }

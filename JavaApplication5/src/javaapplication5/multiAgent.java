@@ -8,7 +8,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import javaapplication5.*;
 import javaapplication5.agent.*;
-import javaapplication5.ShortestPath;
+import javaapplication5.Path;
 import javaapplication5.AgentManager;
 import javaapplication5.AgentThread;
 import javax.swing.*;
@@ -27,24 +27,43 @@ public class multiAgent {
         ArrayList listeAgents = new ArrayList();
         
         // instanciation des agents
-        Agent agent2 = new Agent(g,4,4,2,3);
-        Agent agent1 = new Agent(g,3,4,2,2);
-        Agent agent3 = new Agent(g,4,3,1,1);
-        Agent agent4 = new Agent(g,3,3,1,1);
-
+        Agent agent2 = new Agent(g);
+        Agent agent1 = new Agent(g);
+        Agent agent3 = new Agent(g);
+        Agent agent4 = new Agent(g);
+        
+        Agent agent5 = new Agent(g);
+        Agent agent6 = new Agent(g);
+        
+        
+       Agent agent7 = new Agent(g);
+       Agent agent8 = new Agent(g);
+        
+        //Agent agent9 = new Agent(g);
+       //Agent agent10 = new Agent(g);
+        
         listeAgents.add(agent2);
-        listeAgents.add(agent1);
+        listeAgents.add(agent5);
         listeAgents.add(agent3);
         listeAgents.add(agent4);
-
-        AgentManager agentManag = new AgentManager(listeAgents);
+        listeAgents.add(agent1);
+        listeAgents.add(agent6);
         
+        listeAgents.add(agent7);
+        listeAgents.add(agent8);
+
+        //listeAgents.add(agent9);
+        //listeAgents.add(agent10);
+    
+        
+        
+        AgentManager agentManag = new AgentManager(listeAgents,g);
+        System.out.println("Grille de base");
         g.afficher();
+        System.out.println();
        
        while(!agentManag.allAgentsInFinalPosition()){
-   
            agentManag.moveAgent();
-         
        }
        
        
@@ -52,32 +71,7 @@ public class multiAgent {
        agentManag.afficherEtatFinal();
        
        
-       
-       
-       /*
-        ArrayList listeAgentsThread = new ArrayList();
-
-       
-       Thread a1 = new Thread(new AgentThread(g));
-       Thread a2 = new Thread(new AgentThread(g));
-       Thread a3 = new Thread(new AgentThread(g));
-       Thread a4 = new Thread(new AgentThread(g));
-
-                     
-       listeAgentsThread.add(a1);
-       listeAgentsThread.add(a2);
-       listeAgentsThread.add(a3);
-       listeAgentsThread.add(a4);
-       
-       for(int i = 0 ; i < listeAgentsThread.size();i++)
-       {
-           Thread thread =  (Thread)listeAgentsThread.get(i);
-           thread.start();
-       }
-       
-       */
-       
-        
+   
     }
     
 }
